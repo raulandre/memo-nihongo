@@ -9,6 +9,11 @@ public class UserManager : IUserManager
 {
     private readonly IUserRepository userRepository;
 
+    public UserManager(IUserRepository userRepository)
+    {
+        this.userRepository = userRepository; 
+    }
+
     public async Task<User> Create(User user)
     {
         if(await userRepository.GetWhere(u => u.Username.Equals(user.Username) || u.Email.Equals(user.Email)).AnyAsync())

@@ -19,6 +19,7 @@ public class TestUserController
     {
         PasswordUtils.CreatePasswordHash("password", out byte[] hash, out byte[] salt);
         userManagerMock.Setup(u => u.GetByUsername(It.Is<string>(s => s.Equals("raul")))).ReturnsAsync(new User("raul", "", hash, salt));
+        userManagerMock.Setup(u => u.Create(It.IsAny<User>())).ReturnsAsync(new User("raul", "", hash, salt));
     }
 
     [Fact]
@@ -44,7 +45,7 @@ public class TestUserController
     }
 
     [Fact]
-    public async Task Login_OnInexistentUsername_ReturnsBadRequest()
+    public async Task Login_OnInexistentUsername_ReturnsNotFound()
     {
         //Arrange
         var sut = new UserController(userManagerMock.Object);
@@ -52,5 +53,16 @@ public class TestUserController
         var result = (NotFoundObjectResult)await sut.Login(new("raulandre", "password"));
         //Assert 
         result.StatusCode.Should().Be(404);
+    }
+
+    [Fact]
+    public async Task Register_OnSuccess_ReturnsOk()
+    {
+        //Arrange
+        var sut = new UserController(userManagerMock.Object);
+        //Act
+        var result = (OkObjectResult)await sut.Register(new("raul", "email", "password"));
+        //Assert 
+        result.StatusCode.Should().Be(200);
     }
 }
