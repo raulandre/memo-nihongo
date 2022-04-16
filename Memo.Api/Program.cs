@@ -1,14 +1,21 @@
 using Memo.Infra;
-using Memo.Infra.Repositories;
+using Memo.Infra.Managers.Users;
+using Memo.Infra.Repositories.Users;
 using Memo.Infra.Utils;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(new DatabaseUtils(builder.Configuration).GetConnectionString()));
+builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(
+    new DatabaseUtils(builder.Configuration).GetConnectionString())
+);
 
+//Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+//Managers
+builder.Services.AddScoped<IUserManager, UserManager>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
