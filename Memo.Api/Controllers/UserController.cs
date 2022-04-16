@@ -16,6 +16,11 @@ public class UserController : ControllerBase
     {
         this.userRepository = userRepository;        
     }
+    [HttpGet("/status")]
+    public IActionResult Status()
+    {
+        return Ok("こんにちは！");
+    }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginViewModel request)
