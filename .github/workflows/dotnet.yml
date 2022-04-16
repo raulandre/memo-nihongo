@@ -23,6 +23,10 @@ jobs:
       run: dotnet build ./Memo.Api --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
     - name: Build, Push and Release a Docker container to Heroku.
       uses: gonuit/heroku-docker-deploy@v1.3.3
       with:
