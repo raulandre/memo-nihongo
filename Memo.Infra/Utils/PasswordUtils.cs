@@ -36,7 +36,7 @@ public static class PasswordUtils
 
         var superSecretKey = 
             Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") is var env
-            && env == "Development"
+            && env == "Development" || env is null
             ? "nyanyanyanyanyanyanyanyanyan"
             : Environment.GetEnvironmentVariable("SUPER_SECRET_TOKEN");
         

@@ -1,7 +1,6 @@
 using Memo.Api.ViewModels.User;
 using Memo.Domain.Models;
 using Memo.Infra.Managers.Users;
-using Memo.Infra.Repositories.Users;
 using Memo.Infra.Utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,11 +19,11 @@ public class UserController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginViewModel request)
     {
-        var user = await userManager.GetByUsername(request.username);
+        var user = await userManager.GetByUsername(request.Username);
         if(user is null)
             return NotFound("User not found!");
 
-        if(PasswordUtils.VerifyPasswordHash(user, request.password, user.PasswordHash, user.PasswordSalt))
+        if(PasswordUtils.VerifyPasswordHash(user, request.Password, user.PasswordHash, user.PasswordSalt))
         {
             return Ok(PasswordUtils.CreateToken(user));
         }

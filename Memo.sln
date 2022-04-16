@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memo.Infra", "Memo.Infra\Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memo.Api", "Memo.Api\Memo.Api.csproj", "{648DFF99-1C64-458F-B4FC-3ADFDA1B919C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memo.Tests", "Memo.Tests\Memo.Tests.csproj", "{E62D2E20-EBDA-4FB8-A665-50EC37FCF40D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memo.Tests", "Memo.Tests\Memo.Tests.csproj", "{CAF69D82-F3C8-4141-AB84-6AA51BA8B1C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +32,9 @@ Global
 		{648DFF99-1C64-458F-B4FC-3ADFDA1B919C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{648DFF99-1C64-458F-B4FC-3ADFDA1B919C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{648DFF99-1C64-458F-B4FC-3ADFDA1B919C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E62D2E20-EBDA-4FB8-A665-50EC37FCF40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E62D2E20-EBDA-4FB8-A665-50EC37FCF40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E62D2E20-EBDA-4FB8-A665-50EC37FCF40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E62D2E20-EBDA-4FB8-A665-50EC37FCF40D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAF69D82-F3C8-4141-AB84-6AA51BA8B1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF69D82-F3C8-4141-AB84-6AA51BA8B1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF69D82-F3C8-4141-AB84-6AA51BA8B1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF69D82-F3C8-4141-AB84-6AA51BA8B1C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -24,9 +24,9 @@ public class UserManager : IUserManager
         return await userRepository.Update(user);
     }
 
-    public Task<User> GetByUsername(string username)
+    public async Task<User> GetByUsername(string username)
     {
-        return userRepository.GetWhere(u => u.Username.Equals(username)).FirstOrDefaultAsync();
+        return await userRepository.GetWhere(u => u.Username.Equals(username)).FirstOrDefaultAsync();
     }
 
     public async Task<bool> Delete(Guid id)

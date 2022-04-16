@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
-
+    <NoWarn>MSB3277</NoWarn>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -20,6 +20,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Memo.Api\Memo.Api.csproj" />
+    <ProjectReference Include="..\Memo.Infra\Memo.Infra.csproj" />
   </ItemGroup>
 
 </Project>
