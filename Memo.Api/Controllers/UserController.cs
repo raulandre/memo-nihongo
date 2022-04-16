@@ -17,9 +17,9 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginViewModel request)
+    public IActionResult Login([FromBody] LoginViewModel request)
     {
-        var user = await userManager.GetByUsername(request.Username);
+        var user = userManager.GetByUsername(request.Username);
         if(user is null)
             return NotFound("User not found!");
 
