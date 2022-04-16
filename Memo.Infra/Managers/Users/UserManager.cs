@@ -16,7 +16,7 @@ public class UserManager : IUserManager
 
     public async Task<User> Create(User user)
     {
-        if(await userRepository.GetWhere(u => u.Username.Equals(user.Username) || u.Email.Equals(user.Email)).AnyAsync())
+        if(userRepository.GetWhere(u => u.Username.Equals(user.Username) || u.Email.Equals(user.Email)).Any())
             throw new Exception("Username or email already in use!");
 
         user.Email = user.Email.ToLower();
@@ -29,9 +29,9 @@ public class UserManager : IUserManager
         return await userRepository.Update(user);
     }
 
-    public async Task<User> GetByUsername(string username)
+    public User GetByUsername(string username)
     {
-        return await userRepository.GetWhere(u => u.Username.Equals(username)).FirstOrDefaultAsync();
+        return userRepository.GetWhere(u => u.Username.Equals(username)).FirstOrDefault();
     }
 
     public async Task<bool> Delete(Guid id)
