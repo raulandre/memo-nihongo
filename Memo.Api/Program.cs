@@ -9,10 +9,10 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using Memo.Infra.Repositories.Words;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(
     new DatabaseUtils(builder.Configuration).GetConnectionString())
 );
@@ -24,8 +24,8 @@ builder.Services.AddScoped<IWordsRepository, WordsRepository>();
 //Managers
 builder.Services.AddScoped<IUserManager, UserManager>();
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme{
@@ -49,6 +49,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
@@ -57,7 +59,6 @@ using (var scope = app.Services.CreateScope())
         context.Database.Migrate();
 }
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

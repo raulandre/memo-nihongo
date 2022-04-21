@@ -4,9 +4,11 @@ using Memo.Infra.Managers.Users;
 using Memo.Infra.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
 
 namespace Memo.Api.Controllers;
 
+[ApiController]
 [AllowAnonymous]
 [Route("auth")]
 public class UserController : ControllerBase
@@ -15,7 +17,7 @@ public class UserController : ControllerBase
 
     public UserController(IUserManager userManager)
     {
-        this.userManager = userManager;        
+        this.userManager = userManager;
     }
 
     [HttpPost("login")]
