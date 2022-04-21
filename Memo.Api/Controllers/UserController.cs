@@ -14,10 +14,12 @@ namespace Memo.Api.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IUserManager userManager;
+    private readonly IMapper mapper;
 
-    public UserController(IUserManager userManager)
+    public UserController(IUserManager userManager, IMapper mapper)
     {
         this.userManager = userManager;
+        this.mapper = mapper;
     }
 
     [HttpPost("login")]
@@ -38,8 +40,9 @@ public class UserController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterViewModel request)
     {
-        PasswordUtils.CreatePasswordHash(request.password, out byte[] hash, out byte[] salt);
-        var user = new User(request.username, request.email, hash, salt);
-        return Ok(await userManager.Create(user));
+        PasswordUtils.CreatePasswordHash(request.Password, out byte[] hash, out byte[] salt);
+        var user = new User(request.Username, request.Email, hash, salt);
+        var userCreated = await userManager.Create(user);
+        return Ok(mapper.Map<RegisterViewModel>(userCreated));
     }
 }

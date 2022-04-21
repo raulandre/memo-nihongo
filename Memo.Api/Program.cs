@@ -10,6 +10,7 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using Memo.Infra.Repositories.Words;
 using FluentValidation.AspNetCore;
+using Memo.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -71,5 +72,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.Run();

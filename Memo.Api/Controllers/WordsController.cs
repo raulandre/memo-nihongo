@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Memo.Api.Controllers;
 
+[ApiController]
 [Authorize]
 [Route("[controller]")]
 public class WordsController : ControllerBase

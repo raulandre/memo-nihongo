@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using AutoMapper;
 using FluentAssertions;
 using Memo.Api.Controllers;
 using Memo.Domain.Models;
@@ -14,6 +15,7 @@ public class TestUserController
 {
 
     private readonly Mock<IUserManager> userManagerMock = new();
+    private readonly Mock<IMapper> mapper = new();
 
     public TestUserController()
     {
@@ -26,7 +28,7 @@ public class TestUserController
     public void Login_OnSuccess_ReturnsOk()
     {
         //Arrange
-        var sut = new UserController(userManagerMock.Object);
+        var sut = new UserController(userManagerMock.Object, mapper.Object);
         //Act
         var result = (OkObjectResult)sut.Login(new("raul", "password"));
         //Assert 
@@ -37,7 +39,7 @@ public class TestUserController
     public void Login_OnWrongPassword_ReturnsUnauthorized()
     {
         //Arrange
-        var sut = new UserController(userManagerMock.Object);
+        var sut = new UserController(userManagerMock.Object, mapper.Object);
         //Act
         var result = (UnauthorizedObjectResult)sut.Login(new("raul", "wrong_password"));
         //Assert 
@@ -48,7 +50,7 @@ public class TestUserController
     public void Login_OnInexistentUsername_ReturnsNotFound()
     {
         //Arrange
-        var sut = new UserController(userManagerMock.Object);
+        var sut = new UserController(userManagerMock.Object, mapper.Object);
         //Act
         var result = (NotFoundObjectResult)sut.Login(new("raulandre", "password"));
         //Assert 
@@ -59,7 +61,7 @@ public class TestUserController
     public async Task Register_OnSuccess_ReturnsOk()
     {
         //Arrange
-        var sut = new UserController(userManagerMock.Object);
+        var sut = new UserController(userManagerMock.Object, mapper.Object);
         //Act
         var result = (OkObjectResult)await sut.Register(new("raul", "email", "password"));
         //Assert 
