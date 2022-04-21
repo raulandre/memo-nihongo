@@ -34,11 +34,7 @@ public static class PasswordUtils
             new(ClaimTypes.Email, user.Email)
         };
 
-        var superSecretKey = 
-            Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") is var env
-            && env == "Development" || env is null
-            ? "nyanyanyanyanyanyanyanyanyan"
-            : Environment.GetEnvironmentVariable("SUPER_SECRET_TOKEN");
+        var superSecretKey = GetSuperSecretKey();
         
         var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(superSecretKey));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
@@ -50,4 +46,10 @@ public static class PasswordUtils
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    public static string GetSuperSecretKey()
+        =>  Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") is var env
+            && env == "Development" || env is null
+            ? "nyanyanyanyanyanyanyanyanyan"
+            : Environment.GetEnvironmentVariable("SUPER_SECRET_TOKEN");
 }

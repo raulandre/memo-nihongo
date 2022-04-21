@@ -6,7 +6,10 @@ public class LoginViewModel
     public string Password { get; set; }
 
     public LoginViewModel()
-    { }
+    {
+        Username = string.Empty;
+        Password = string.Empty;
+    }
 
     public LoginViewModel(string username, string password)
     {
