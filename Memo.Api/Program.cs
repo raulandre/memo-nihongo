@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
+using Memo.Infra.Repositories.Words;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(
 
 //Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IWordsRepository, WordsRepository>();
 
 //Managers
 builder.Services.AddScoped<IUserManager, UserManager>();

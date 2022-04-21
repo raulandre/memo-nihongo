@@ -30,8 +30,9 @@ public static class PasswordUtils
     {
         var claims = new List<Claim>
         {
+            new("Id", user.Id.ToString()),
             new(ClaimTypes.Name, user.Username),
-            new(ClaimTypes.Email, user.Email)
+            new(ClaimTypes.Email, user.Email),
         };
 
         var superSecretKey = GetSuperSecretKey();

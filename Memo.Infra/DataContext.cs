@@ -22,4 +22,5 @@ public class DataContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Word> Words { get; set; }
 }
