@@ -15,6 +15,10 @@ public class DataContext : DbContext
         modelBuilder.Entity<User>()
                     .Property(e => e.Id)
                     .HasDefaultValueSql("gen_random_uuid()");
+        
+        modelBuilder.Entity<Word>()
+                    .Property(w => w.Id)
+                    .HasDefaultValueSql("gen_random_uuid()");
     }
 
     public DbSet<User> Users { get; set; }
