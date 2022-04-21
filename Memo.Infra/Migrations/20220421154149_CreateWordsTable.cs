@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Memo.Infra.Migrations
 {
-    public partial class CreateWordModel : Migration
+    public partial class CreateWordsTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Word",
+                name: "Words",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
@@ -23,9 +23,9 @@ namespace Memo.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Word", x => x.Id);
+                    table.PrimaryKey("PK_Words", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Word_Users_UserId",
+                        name: "FK_Words_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -33,15 +33,15 @@ namespace Memo.Infra.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Word_UserId",
-                table: "Word",
+                name: "IX_Words_UserId",
+                table: "Words",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Word");
+                name: "Words");
         }
     }
 }

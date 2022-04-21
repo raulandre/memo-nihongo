@@ -75,7 +75,7 @@ namespace Memo.Infra.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Word");
+                    b.ToTable("Words");
                 });
 
             modelBuilder.Entity("Memo.Domain.Models.Word", b =>

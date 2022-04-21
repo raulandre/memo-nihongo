@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Memo.Infra.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220421033159_CreateWordModel")]
-    partial class CreateWordModel
+    [Migration("20220421154149_CreateWordsTable")]
+    partial class CreateWordsTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,7 +77,7 @@ namespace Memo.Infra.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Word");
+                    b.ToTable("Words");
                 });
 
             modelBuilder.Entity("Memo.Domain.Models.Word", b =>
