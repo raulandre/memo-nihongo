@@ -31,8 +31,7 @@ public class Word
     {
         Id = Guid.NewGuid();
         Text = text;
-        Created = DateTime.UtcNow;
-        LastReviewed = null;
+        LastReviewed = DateTime.UtcNow;
         TimesForgotten = 0;
         TimesRemembered = 0;
         UserId = userId;
