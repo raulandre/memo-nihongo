@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Memo.Domain.Models;
 
 public class Word
-{
+{   
     public Guid Id { get; set; }
     public string Text { get; set; }
     public DateTime Created { get; set; }
@@ -25,5 +25,16 @@ public class Word
         LastReviewed = null;
         TimesForgotten = 0;
         TimesRemembered = 0;
+    }
+    
+    public Word(string text, Guid userId)
+    {
+        Id = Guid.NewGuid();
+        Text = text;
+        Created = DateTime.UtcNow;
+        LastReviewed = null;
+        TimesForgotten = 0;
+        TimesRemembered = 0;
+        UserId = userId;
     }
 }

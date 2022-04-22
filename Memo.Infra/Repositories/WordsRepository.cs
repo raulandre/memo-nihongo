@@ -20,8 +20,22 @@ public class WordsRepository : IWordsRepository
         return word;
     }
 
-    public async Task<IList<Word>> Get(Guid userId)
+    public async Task Delete(Word word)
     {
-        return await context.Words.Where(w => w.User.Id == userId).ToListAsync();
+        context.Remove(word);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task<Word> Get(Guid id)
+        => await context.Words.FirstOrDefaultAsync(w => w.Id == id);
+
+    public async Task<List<Word>> GetByUserId(Guid userId)
+        => await context.Words.Where(w => w.User.Id == userId).ToListAsync();
+
+    public async Task<Word> Update(Word word)
+    {
+        context.Words.Update(word);
+        await context.SaveChangesAsync();
+        return word;
     }
 }

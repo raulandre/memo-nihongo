@@ -14,7 +14,7 @@ namespace Memo.Tests.Systems.Controllers;
 public class TestUserController
 {
 
-    private readonly Mock<IUserManager> userManagerMock = new();
+    private readonly Mock<IUsersManager> userManagerMock = new();
     private readonly Mock<IMapper> mapper = new();
 
     public TestUserController()

@@ -2,7 +2,7 @@ using Memo.Domain.Models;
 
 namespace Memo.Domain.Managers.Users;
 
-public interface IUserManager
+public interface IUsersManager
 {
     User GetByUsername(string username);
     Task<User> Create(User user);

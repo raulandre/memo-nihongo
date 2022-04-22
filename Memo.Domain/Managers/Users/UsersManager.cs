@@ -4,11 +4,11 @@ using Memo.Domain.Managers.Users;
 
 namespace Memo.Infra.Managers.Users;
 
-public class UserManager : IUserManager
+public class UsersManager : IUsersManager
 {
     private readonly IUserRepository userRepository;
 
-    public UserManager(IUserRepository userRepository)
+    public UsersManager(IUserRepository userRepository)
     {
         this.userRepository = userRepository; 
     }
