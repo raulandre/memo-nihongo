@@ -1,8 +1,9 @@
 using System.Collections;
 using Memo.Domain.Models;
+using Memo.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace Memo.Infra.Repositories.Users;
+namespace Memo.Infra.Repositories;
 
 public class UserRepository : IUserRepository
 {

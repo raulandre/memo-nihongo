@@ -1,7 +1,6 @@
 using Memo.Domain.Models;
-using Memo.Infra.Repositories.Users;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using Memo.Domain.Repositories;
+using Memo.Domain.Managers.Users;
 
 namespace Memo.Infra.Managers.Users;
 

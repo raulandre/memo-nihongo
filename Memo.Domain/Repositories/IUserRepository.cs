@@ -1,7 +1,7 @@
 using System.Collections;
 using Memo.Domain.Models;
 
-namespace Memo.Infra.Repositories.Users;
+namespace Memo.Domain.Repositories;
 
 public interface IUserRepository
 {

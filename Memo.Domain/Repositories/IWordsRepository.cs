@@ -1,6 +1,6 @@
 using Memo.Domain.Models;
 
-namespace Memo.Infra.Repositories.Words;
+namespace Memo.Domain.Repositories;
 
 public interface IWordsRepository
 {

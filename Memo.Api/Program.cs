@@ -1,6 +1,6 @@
 using Memo.Infra;
 using Memo.Infra.Managers.Users;
-using Memo.Infra.Repositories.Users;
+using Memo.Infra.Repositories;
 using Memo.Infra.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -8,9 +8,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
-using Memo.Infra.Repositories.Words;
 using FluentValidation.AspNetCore;
 using Memo.Api;
+using Memo.Domain.Repositories;
+using Memo.Domain.Managers.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 

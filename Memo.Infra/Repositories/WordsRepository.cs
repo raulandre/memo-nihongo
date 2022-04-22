@@ -1,7 +1,8 @@
 using Memo.Domain.Models;
+using Memo.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace Memo.Infra.Repositories.Words;
+namespace Memo.Infra.Repositories;
 
 public class WordsRepository : IWordsRepository
 {

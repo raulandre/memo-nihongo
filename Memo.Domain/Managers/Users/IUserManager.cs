@@ -1,6 +1,6 @@
 using Memo.Domain.Models;
 
-namespace Memo.Infra.Managers.Users;
+namespace Memo.Domain.Managers.Users;
 
 public interface IUserManager
 {

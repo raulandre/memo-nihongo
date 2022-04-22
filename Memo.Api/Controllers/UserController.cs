@@ -1,6 +1,6 @@
 using Memo.Api.ViewModels.User;
 using Memo.Domain.Models;
-using Memo.Infra.Managers.Users;
+using Memo.Domain.Managers.Users;
 using Memo.Infra.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
