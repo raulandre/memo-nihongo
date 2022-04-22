@@ -13,10 +13,10 @@ namespace Memo.Api.Controllers;
 [Route("auth")]
 public class UserController : ControllerBase
 {
-    private readonly IUserManager userManager;
+    private readonly IUsersManager userManager;
     private readonly IMapper mapper;
 
-    public UserController(IUserManager userManager, IMapper mapper)
+    public UserController(IUsersManager userManager, IMapper mapper)
     {
         this.userManager = userManager;
         this.mapper = mapper;

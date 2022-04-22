@@ -12,6 +12,7 @@ using FluentValidation.AspNetCore;
 using Memo.Api;
 using Memo.Domain.Repositories;
 using Memo.Domain.Managers.Users;
+using Memo.Domain.Managers.Words;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +25,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IWordsRepository, WordsRepository>();
 
 //Managers
-builder.Services.AddScoped<IUserManager, UserManager>();
+builder.Services.AddScoped<IUsersManager, UsersManager>();
+builder.Services.AddScoped<IWordsManager, WordsManager>();
 
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
